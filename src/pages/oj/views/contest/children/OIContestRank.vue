@@ -1,5 +1,5 @@
 <template>
-  <Panel shadow>
+  <Panel v-if="isContestAdmin" shadow>
     <div slot="title">{{ contest.title }}</div>
     <div slot="extra">
       <screen-full :height="18" :width="18" class="screen-full"></screen-full>
@@ -39,7 +39,7 @@
   </Panel>
 </template>
 <script>
-  import { mapActions } from 'vuex'
+  import { mapActions, mapGetters } from 'vuex'
 
   import Pagination from '@oj/components/Pagination'
   import ContestRankMixin from './contestRankMixin'
@@ -171,6 +171,11 @@
       } else {
         this.addTableColumns(this.contestProblems)
       }
+    },
+    computed: {
+      ...mapGetters(
+        ['isContestAdmin']
+      )
     },
     methods: {
       ...mapActions(['getContestProblems']),
