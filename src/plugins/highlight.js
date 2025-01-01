@@ -1,10 +1,9 @@
-import hljs from 'highlight.js/lib/highlight'
+//import hljs from 'highlight.js/lib/highlight'
 import cpp from 'highlight.js/lib/languages/cpp'
 import python from 'highlight.js/lib/languages/python'
 import java from 'highlight.js/lib/languages/java'
 import 'highlight.js/styles/atom-one-light.css'
-import initLineNumbersOnLoad from './highlightjs-line-numbers2.js'
-import './linenumbers.css'
+import hljs from "./highlightjs-line-numbers2.js"
 
 hljs.registerLanguage('cpp', cpp)
 hljs.registerLanguage('java', java)
@@ -15,8 +14,7 @@ export default {
     Vue.directive('highlight', {
       deep: true,
       bind: function (el, binding) {
-        // init highlightjs-line-numbers2
-        //highlightjsLineNumbers.init(hljs)
+        // init highlightjs-line-numbers
         hljs.initLineNumbersOnLoad();
         // on first bind, highlight all targets
         Array.from(el.querySelectorAll('code')).forEach((target) => {
@@ -31,8 +29,8 @@ export default {
         hljs.initLineNumbersOnLoad({singleLine: true})
       },
       componentUpdated: function (el, binding) {
-        // init highlightjs-line-numbers2
-        highlightjsLineNumbers.init(hljs)
+        // init highlightjs-line-numbers
+        hljs.initLineNumbersOnLoad();
         // after an update, re-fill the content and then highlight
         Array.from(el.querySelectorAll('code')).forEach((target) => {
           if (binding.value) {

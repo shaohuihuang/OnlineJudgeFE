@@ -1,5 +1,6 @@
 // jshint multistr:true
-
+import hljs from "highlight.js";
+import "./linenumbers.css";
 (function (w, d) {
     'use strict';
 
@@ -11,11 +12,11 @@
         DATA_ATTR_NAME = 'data-line-number',
         BREAK_LINE_REGEXP = /\r\n|\r|\n/g;
 
-    if (w.hljs) {
-        w.hljs.initLineNumbersOnLoad = initLineNumbersOnLoad;
-        w.hljs.lineNumbersBlock = lineNumbersBlock;
-        w.hljs.lineNumbersBlockSync = lineNumbersBlockSync;
-        w.hljs.lineNumbersValue = lineNumbersValue;
+    if (hljs) {
+        hljs.initLineNumbersOnLoad = initLineNumbersOnLoad;
+        hljs.lineNumbersBlock = lineNumbersBlock;
+        hljs.lineNumbersBlockSync = lineNumbersBlockSync;
+        hljs.lineNumbersValue = lineNumbersValue;
 
         addStyles();
     } else {
@@ -371,3 +372,5 @@
     }
 
 }(window, document));
+
+export default hljs;
