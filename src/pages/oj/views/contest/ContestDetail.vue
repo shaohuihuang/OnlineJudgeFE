@@ -58,7 +58,7 @@
           {{$t('m.Submissions')}}
         </VerticalMenu-item>
 
-        <VerticalMenu-item v-if="isContestAdmin"
+        <VerticalMenu-item v-if="canViewContestRank"
                            :disabled="contestMenuDisabled"
                            :route="{name: 'contest-rank', params: {contestID: contestID}}">
           <Icon type="stats-bars"></Icon>
@@ -169,7 +169,7 @@
         now: state => state.contest.now
       }),
       ...mapGetters(
-        ['contestMenuDisabled', 'contestRuleType', 'contestStatus', 'countdown', 'isContestAdmin',
+        ['contestMenuDisabled', 'contestRuleType', 'contestStatus', 'countdown', 'isContestAdmin', 'canViewContestRank',
           'OIContestRealTimePermission', 'passwordFormVisible']
       ),
       countdownColor () {

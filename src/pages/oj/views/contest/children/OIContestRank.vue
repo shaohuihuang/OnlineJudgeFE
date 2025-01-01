@@ -1,5 +1,5 @@
 <template>
-  <Panel v-if="isContestAdmin" shadow>
+  <Panel v-if="canViewContestRank" shadow>
     <div slot="title">{{ contest.title }}</div>
     <div slot="extra">
       <screen-full :height="18" :width="18" class="screen-full"></screen-full>
@@ -174,7 +174,7 @@
     },
     computed: {
       ...mapGetters(
-        ['isContestAdmin']
+        ['canViewContestRank']
       )
     },
     methods: {

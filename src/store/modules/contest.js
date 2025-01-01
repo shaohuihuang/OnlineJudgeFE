@@ -47,6 +47,10 @@ const getters = {
     return rootGetters.isAuthenticated &&
       (state.contest.created_by.id === rootGetters.user.id || rootGetters.user.admin_type === USER_TYPE.SUPER_ADMIN)
   },
+  canViewContestRank: (state, getters, _, rootGetters) => {
+    return rootGetters.isAuthenticated &&
+      (state.contest.created_by.id === rootGetters.user.id || rootGetters.user.admin_type === USER_TYPE.SUPER_ADMIN || rootGetters.user.admin_type === USER_TYPE.ADMIN)
+  },
   contestMenuDisabled: (state, getters) => {
     if (getters.isContestAdmin) return false
     if (state.contest.contest_type === CONTEST_TYPE.PUBLIC) {
